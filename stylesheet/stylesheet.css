@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300;0,700;1,400&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Shantell Sans";
+}
+
+table
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex : 1 1 0;
+}
+td    
+{
+    border: 2px ridge red;
+    border-radius: 10px;
+    text-align: center;
+    padding: 1% 0 1% 0;
+}
+th
+{
+    border: 2px ridge rgb(63, 10, 45);
+    border-radius: 10px;
+}
+wifi
+{
+    font-size: 10rem; color: rgb(0, 0, 255); opacity: 0.4; -webkit-text-stroke-width: 5.7px; border: hidden;
+}
