@@ -137,17 +137,18 @@ class Hotel
         }
         return $test;
     }
+    // Pour afficher les chambres disponibles et les chambres réservées on peut utiliser deux façons différentes
     public function infosHotel(): string
     {
-        $soustraction = count($this->_chambres) - count($this->_reservations);
+        $soustraction = count($this->_chambres) - count($this->_reservations); 
         $result  = "<h3>Hotel " . $this->_nomHotel . " " . $this->_ville . " </h3><br>";
         $result .= $this->_numeroRue . " " . $this->_nomRue . " " . $this->_ville . " " . $this->_codePostal . " <br>";
         $result .= "Nombre de chambres : " . count($this->_chambres) . " <br>"; //count pour compter les éléments dans un array
-        $result .= "Nombre de chambres dispo : " . $soustraction . "<br>";
+        $result .= "Nombre de chambres dispo : " . $soustraction. " ". count($this->NbChambresDisponible()) . "<br>";
         if ($soustraction == 1) {
-            $result .= "Chambre réservée : " . count($this->_reservations) . "<br><br>";
+            $result .= "Chambre réservée : " . count($this->_reservations) ." ". (($this->NbChambresDisponible()) - ($this->_chambres)) ."<br><br>";
         } else {
-            $result .= "Chambres réservées : " . count($this->_reservations) . "<br><br>";
+            $result .= "Chambres réservées : " . count($this->_reservations) ." ". count($this->_chambres) - count($this->NbChambresDisponible()) . "<br><br>";
         }
         return $result;
     }
