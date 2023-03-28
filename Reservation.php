@@ -18,7 +18,7 @@ class Reservation
         $this->_client->ajouterReservation($this);
         $this->_hotel->ajouterReservation($this);
         $this->_chambre->ajouterReservation($this);
-        $this->_chambre->setDisponibilité(false);
+        $this->_chambre->setDisponibilité(false); //Une chambre est disponible de base : c'est quand elle est réservée qu'elle devient indisponible
     }
     //______________________SETTERS_________________________________
     public function setDepart(string $dateDepart) 
