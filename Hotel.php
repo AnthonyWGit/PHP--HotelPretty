@@ -78,7 +78,8 @@ class Hotel
     {
         $this->_reservations[] = $reservation;
     }
-    public function afficherChambres(): bool   //Ci-dessous exemple de bonne écriture PHP/HTML
+
+    public function afficherChambres()  //Ci-dessous exemple de bonne écriture PHP/HTML
     {
         ?>
         <h3>Chambres de l'hôtel
@@ -118,23 +119,28 @@ class Hotel
         </table>
 
         <?php
-        return true;
+
     }
 
     public function NbChambresDisponible()
     {
         foreach($this->_chambres as $chambreDispo)
         {
-            if ($chambreDispo->getDisponibilite() == true)
+            if ($chambreDispo->getDisponibilite() == false)
+            {
+                $test[] = $chambreDispo;
+            }
+            else
             {
 
             }
         }
+        return $test;
     }
     public function infosHotel(): string
     {
         $soustraction = count($this->_chambres) - count($this->_reservations);
-        $result = "<h3>Hotel " . $this->_nomHotel . " " . $this->_ville . " </h3><br>";
+        $result  = "<h3>Hotel " . $this->_nomHotel . " " . $this->_ville . " </h3><br>";
         $result .= $this->_numeroRue . " " . $this->_nomRue . " " . $this->_ville . " " . $this->_codePostal . " <br>";
         $result .= "Nombre de chambres : " . count($this->_chambres) . " <br>"; //count pour compter les éléments dans un array
         $result .= "Nombre de chambres dispo : " . $soustraction . "<br>";
