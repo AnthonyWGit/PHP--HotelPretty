@@ -63,10 +63,7 @@ class Hotel
     {
         return $this->_ville;
     }
-    public function getChambresDispo(): array
-    {
-        return $this->_chambresDispo;
-    }
+
     //____________________________________________________
 
     public function ajouterChambre(Chambre $chambre)
@@ -76,16 +73,11 @@ class Hotel
     /* Chambres disponibles = création d'un array associatif constitué uniquement de 
     $_chambresDispo [] = $chambre => $disponibilité OU
     compter le nombre de chambres totales - le nombre de réservations*/
-    public function ajouterChambreDispo(Chambre $chambreDispo)
-    {
-        $this->_chambresDispo[] = $chambreDispo;
-    }
 
     public function ajouterReservation(Reservation $reservation)
     {
         $this->_reservations[] = $reservation;
     }
-
     public function afficherChambres(): bool   //Ci-dessous exemple de bonne écriture PHP/HTML
     {
         ?>
@@ -128,17 +120,28 @@ class Hotel
         <?php
         return true;
     }
+
+    public function NbChambresDisponible()
+    {
+        foreach($this->_chambres as $chambreDispo)
+        {
+            if ($chambreDispo->getDisponibilite() == true)
+            {
+
+            }
+        }
+    }
     public function infosHotel(): string
     {
-        // $soustraction = count($this->_chambres) - count($this->_chambresDispo);
+        $soustraction = count($this->_chambres) - count($this->_reservations);
         $result = "<h3>Hotel " . $this->_nomHotel . " " . $this->_ville . " </h3><br>";
         $result .= $this->_numeroRue . " " . $this->_nomRue . " " . $this->_ville . " " . $this->_codePostal . " <br>";
         $result .= "Nombre de chambres : " . count($this->_chambres) . " <br>"; //count pour compter les éléments dans un array
-        // $result .= "Nombre de chambres dispo : " . count($this->_chambresDispo) . "<br>";
-        if ($soustraction = 1) {
-            $result .= "Chambre réservée : " . $soustraction . "<br><br>";
+        $result .= "Nombre de chambres dispo : " . $soustraction . "<br>";
+        if ($soustraction == 1) {
+            $result .= "Chambre réservée : " . count($this->_reservations) . "<br><br>";
         } else {
-            $result .= "Chambres réservées : " . $soustraction . "<br><br>";
+            $result .= "Chambres réservées : " . count($this->_reservations) . "<br><br>";
         }
         return $result;
     }
@@ -146,15 +149,15 @@ class Hotel
     {
         $result = "<h5>Réservations de l'hôtel " . $this->_nomHotel . " " . $this->_ville . " </h5>";
         if (empty($this->_chambres) == false) {
-            // if ($this->_chambres == $this->_chambresDispo) {
-            //     $result .= "Il n'y a aucune réservation.";
-            // } else {
-            //     $result .= count($this->_reservations) . " réservations <br>";
-            //     foreach ($this->_reservations as $reservation) {
-            //         $result .= "<strong>" . $reservation->getClient() . "</strong> | Chambre " . $reservation->getChambre() . " | ";
-            //         $result .= "du " . $reservation->getArrivee() . " au " . $reservation->getDepart() . "<br><br>";
-            //     }
-            // }
+             if (count($this->_chambres) == (count($this->_chambres) - count($this->_reservations))) {
+                 $result .= "Il n'y a aucune réservation.";
+             } else {
+                 $result .= count($this->_reservations) . " réservations <br>";
+                 foreach ($this->_reservations as $reservation) {
+                     $result .= "<strong>" . $reservation->getClient() . "</strong> | Chambre " . $reservation->getChambre() . " | ";
+                     $result .= "du " . $reservation->getArrivee() . " au " . $reservation->getDepart() . "<br><br>";
+                 }
+             }
         } else {
             $result .= "<br>Cet hotel est délabré et n'a plus de chambres.<br>";
         }
