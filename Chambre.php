@@ -13,27 +13,23 @@ class Chambre
     //private int $_chambresDisponible; 
     //private int $_chambresIndisponible;
 
-    public function __construct(Hotel $_nomHotel, int $numeroChambre, bool $wifi, bool $disponibilite, float $prix, int $nbLits)
+    public function __construct(Hotel $Hotel, int $numeroChambre, bool $wifi, float $prix, int $nbLits)
     {
-        $this->_Hotel = $_nomHotel;
+        $this->_Hotel = $Hotel;
         $this->_numeroChambre = $numeroChambre;
         $this->_wifi = $wifi;
-        $this->_disponibilite = $disponibilite;
+        $this->_disponibilite = true;
         $this->_prix = $prix;
         $this->_nbLits = $nbLits;
         $this->_Hotel->ajouterChambre($this);
-        if ( $disponibilite ==true)
-        {
-            $this->_Hotel->ajouterChambreDispo($this);
-        }
-        else
-        {
-            null;
-        }
         //$this->_chambresDisponible = $chambreDisponible;
         //this->_chambresIndisponible = $chambresIndisponible;
     }
 //__________________SETTERS
+    public function setHotel()
+    {
+
+    }
     public function setNumeroChambre(int $numeroChambre)
     {
         $this->_numeroChambre = $numeroChambre;
@@ -42,9 +38,9 @@ class Chambre
     {
         $this->_wifi = true;
     }
-    public function setDisponibilité()
+    public function setDisponibilité($bool)
     {
-        $this->_disponibilite = false;
+        $this->_disponibilite = $bool;
     }
 /*    public function setChambresDisponible(int $chambreDisponible)
     {
@@ -127,5 +123,13 @@ class Chambre
     {
         $result = "$this->_numeroChambre";
         return $result;
+    }
+
+    /**
+     * Get the value of _Hotel
+     */ 
+    public function get_Hotel()
+    {
+        return $this->_Hotel;
     }
 }
