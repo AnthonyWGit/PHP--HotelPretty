@@ -92,7 +92,7 @@ class Hotel
     {
         $result = "<h3>Chambres de l'hôtel ".$this->_nomHotel." ".$this->_ville. " </h3><br>";
         $result .="<table>";
-        $result .="<tr><th>Numéro de chambre</th><th>Wifi</th><th>Disponibilité</th><th>Prix</th></tr>";
+        $result .="<tr><th>Chambre</th><th>Wifi</th><th>Disponibilité</th><th>Prix</th></tr>";
         foreach ($this->_chambres as $chambre)
         {
             $result .="<tr>";
