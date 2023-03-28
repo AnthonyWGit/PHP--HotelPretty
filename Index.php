@@ -30,7 +30,7 @@ $chambre3 = new Chambre($ibisStbg, 3, false,  200.99, 2);
 $chambre4 = new Chambre($ibisStbg, 4, true, 50, 1);
 $chambre5 = new Chambre($ibisStbg, 5, false,  200.99, 2);
 $chambre6 = new Chambre($ibisStbg, 6, true, 50, 1);
-$chambre7 = new Chambre($ibisStbg, 7, false, false, 50, 1);
+$chambre7 = new Chambre($ibisStbg, 7, false, 50, 1);
 $chambre8 = new Chambre($paxHotelParis, 7, false,  50, 1);
 $chambre9 = new Chambre($paxHotelParis, 7, false,  50, 1);
 $chambre10 = new Chambre($paxHotelParis, 10, true, 3888, 4);
@@ -49,11 +49,11 @@ echo $ibisStbg->afficherChambres();
 /* echo $chambre1->infosChambre();
 echo $chambre2->infosChambre();
 */
-// echo $ibisStbg->infosHotel();
-// echo $marieGeorges->afficherReservationDuClient();
-// echo $ibisStbg->infosReservation();
-// echo $paxHotelParis->infosReservation();
-// echo $hotelF1->infosReservation();  
+echo $ibisStbg->infosHotel();
+echo $marieGeorges->afficherReservationDuClient();
+echo $ibisStbg->infosReservation();
+echo $paxHotelParis->infosReservation();
+echo $hotelF1->infosReservation();  
 ?>
 
         </div>
